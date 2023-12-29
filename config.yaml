@@ -1,0 +1,59 @@
+DFF_template:
+  sd_path: utils/filters/model_DFF/pretrained_bar-mask_self_trained.pth
+  type: DFF
+Data:
+  elevation_map_predicted_path: data/elevation_map_predicted.npy
+  elevation_map_semi_predicted_path: data/elevation_map_semi_predicted.npy
+  length: 148
+  step: 0.5
+FAF12_template:
+  friction_angle: 28.5
+  lines_angle:
+  - -45
+  - 0
+  - 45
+  type: FAF12
+FAF1_template:
+  friction_angle: 28.5
+  type: FAF1
+MassCalculator:
+  base_line_path: data/base_plan.npy
+  densities_path: ./data/sensors/densities.csv
+  volume_mass_path: data/volume_mass.npy
+Models:
+  buffer_size: 1000
+  filter:
+    sd_path: utils/filters/model_DFF/pretrained_bar-mask_self_trained.pth
+    type: DFF
+  transversal_models:
+    gratteur:
+      history_map_path: utils/transversal_models/history_map.npy
+      matching_interval: 1
+      type: DMM
+NNF_template:
+  step_NNF: 2
+  type: NNF
+NNM_template:
+  pretrained_path: utils/transversal_models/NNM_gratteur.pth
+  type: NNM
+watchdog:
+  historical_data_path: ./data/historical_data.npy
+  observations:
+    gratteur:
+      encoder:
+        key: E
+        value: '100.0'
+        y_cord_sensor: 0
+      level_sensor_1:
+        key: S1
+        value: '7.9'
+        x_cord: 23
+        z_cord: 16.3
+      level_sensor_2:
+        key: S2
+        value: '7.8'
+        x_cord: 30
+        z_cord: 16.3
+  sensors_file_folder: ./data/sensors
+  sensors_file_path: ./data/sensors/sensors.csv
+  time_interval_history: 60
